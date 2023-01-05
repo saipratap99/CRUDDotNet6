@@ -24,16 +24,40 @@ namespace CRUDDotNet6.Controllers.Students
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<object>> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var students = await this._studentService.GetStudents();
+                return Ok(students);
+            }
+            catch (Exception e)
+            {
+
+                if (e.GetType() == typeof(BusinessException))
+                    return BadRequest(e.Message);
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<object>> Get(int id)
         {
-            return "value";
+            try
+            {
+                var student = await this._studentService.GetStudent(id);
+                return Ok(student);
+            }
+            catch (Exception e)
+            {
+
+                if (e.GetType() == typeof(BusinessException))
+                    return BadRequest(e.Message);
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
         }
 
         // POST api/values
@@ -53,19 +77,44 @@ namespace CRUDDotNet6.Controllers.Students
                 else
                     return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
             }
-            
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public async Task<ActionResult<object>> Put(int id, [FromBody]Student student)
         {
+            try
+            {
+                var response = await this._studentService.UpdateStudent(id, student);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+
+                if (e.GetType() == typeof(BusinessException))
+                    return BadRequest(e.Message);
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult<object>> Delete(int id)
         {
+            try
+            {
+                var response = await this._studentService.DeleteStudent(id);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+
+                if (e.GetType() == typeof(BusinessException))
+                    return BadRequest(e.Message);
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+            }
         }
     }
 }

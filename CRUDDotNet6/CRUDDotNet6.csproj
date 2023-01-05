@@ -15,6 +15,12 @@
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="MySql.Data.EntityFrameworkCore" />
     <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="Repositories\" />
+    <None Remove="Exceptions\" />
+    <None Remove="Services\" />
+    <None Remove="Controllers\Students\" />
+    <None Remove="Constants\" />
+    <None Remove="Utils\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
@@ -25,5 +31,13 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Services\" />
+    <Folder Include="Controllers\Students\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Utils\" />
   </ItemGroup>
 </Project>

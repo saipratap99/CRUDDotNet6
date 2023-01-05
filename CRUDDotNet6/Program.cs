@@ -1,4 +1,6 @@
 ﻿using CRUDDotNet6.Models;
+using CRUDDotNet6.Repositories;
+using CRUDDotNet6.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,12 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
+builder.Services.AddTransient<IStudentService, StudentService>();
+
+builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 // DB Config
 builder.Services.AddDbContext<studentsDBContext>(options =>
 {
     var serverVersion = new MySqlServerVersion(new Version(8, 0, 28));
     options.UseMySql(builder.Configuration.GetConnectionString("DotNetTrainingDB"), serverVersion);
 });
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -4,23 +4,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CRUDDotNet6.Models
 {
-    public partial class Student
+    public partial class User
     {
-        [Required]
-        [Range(1, Int32.MaxValue)]
         public int Id { get; set; }
-
-        [Required]
-        [MaxLength(60)]
-        [MinLength(3)]
-        public string Name { get; set; } = null!;
-
         [Required]
         [EmailAddress]
         public string Email { get; set; } = null!;
-
-        [MinLength(3)]
+        [Required]
+        public string Password { get; set; } = null!;
+        [Required]
         [MaxLength(45)]
-        public string? City { get; set; }
+        public string Name { get; set; } = null!;
     }
 }

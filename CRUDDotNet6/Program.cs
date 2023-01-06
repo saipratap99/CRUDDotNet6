@@ -8,9 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IStudentService, StudentService>();
 
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IStudentRepository, StudentRepository>();
 // DB Config
 builder.Services.AddDbContext<studentsDBContext>(options =>

@@ -21,6 +21,7 @@
     <None Remove="Controllers\Students\" />
     <None Remove="Constants\" />
     <None Remove="Utils\" />
+    <None Remove="Controllers\Users\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
@@ -39,5 +40,6 @@
     <Folder Include="Controllers\Students\" />
     <Folder Include="Constants\" />
     <Folder Include="Utils\" />
+    <Folder Include="Controllers\Users\" />
   </ItemGroup>
 </Project>

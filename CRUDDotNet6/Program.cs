@@ -1,7 +1,6 @@
 ﻿using CRUDDotNet6.Models;
 using CRUDDotNet6.Repositories;
 using CRUDDotNet6.Services;
-using Azure.Extensions.AspNetCore.Configuration.Secrets;
 using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -10,26 +9,23 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using CRUDDotNet6.Utils;
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 var defaultCredentials = new DefaultAzureCredential();
+var keyVaultEndpoint = builder.Configuration["AzureKeyVaultEndpoint"];
 
-/*
-var settings = builder.Build();
-var keyVaultEndpoint = settings["AzureKeyVaultEndpoint"];
-
-
-builder.AddAzureKeyVault((keyVaultEndpoint, defaultCredentials,
+//builder.AddAzureKeyVault(new Uri(keyVaultEndpoint));
+builder.Configuration.AddAzureKeyVault(new Uri(keyVaultEndpoint), defaultCredentials,
     new AzureKeyVaultConfigurationOptions
     {
         // Manager = new PrefixKeyVaultSecretManager(secretPrefix),
         ReloadInterval = TimeSpan.FromMinutes(5)
     });
 
-*/
 builder.Services.AddControllers();
 /// configure strongly typed settings object
 builder.Services.Configure<JWT>(builder.Configuration.GetSection("JWT"));
@@ -121,6 +117,8 @@ builder.Services.AddSwaggerGen(options =>
 
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

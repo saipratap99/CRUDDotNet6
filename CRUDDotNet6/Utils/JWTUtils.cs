@@ -24,7 +24,7 @@ namespace CRUDDotNet6.Utils
                         issuer: iconfig.GetValue<string>("JWT:ValidIssuer"),
                         audience: iconfig.GetValue<string>("JWT:ValidAudience"),
                         claims: claims,
-                        expires: DateTime.Now.AddMinutes(6),
+                        expires: DateTime.Now.AddMinutes(60),
                         signingCredentials: signinCredentials
                     );
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);

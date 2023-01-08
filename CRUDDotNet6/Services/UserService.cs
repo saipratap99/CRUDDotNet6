@@ -29,6 +29,9 @@ namespace CRUDDotNet6.Services
                     throw new BusinessException(errorMessages);
                 }
                 this._logger.LogInformation($"Exit Services.UserService.CreateUser");
+                user.Id = 0;
+                // Hashing password using Bcrypt
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
                 string response = await this._userRepository.CreateUser(user);
                 return response;
             }

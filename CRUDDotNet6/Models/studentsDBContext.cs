@@ -40,9 +40,7 @@ namespace CRUDDotNet6.Models
                 entity.HasIndex(e => e.Email, "email_UNIQUE")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.City)
                     .HasMaxLength(45)
@@ -67,9 +65,7 @@ namespace CRUDDotNet6.Models
                 entity.HasIndex(e => e.Id, "id_UNIQUE")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(60)

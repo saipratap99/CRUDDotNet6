@@ -1,12 +1,30 @@
 ﻿using CRUDDotNet6.Models;
 using CRUDDotNet6.Repositories;
 using CRUDDotNet6.Services;
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var defaultCredentials = new DefaultAzureCredential();
+
+/*
+var settings = builder.Build();
+var keyVaultEndpoint = settings["AzureKeyVaultEndpoint"];
+
+
+builder.AddAzureKeyVault((keyVaultEndpoint, defaultCredentials,
+    new AzureKeyVaultConfigurationOptions
+    {
+        // Manager = new PrefixKeyVaultSecretManager(secretPrefix),
+        ReloadInterval = TimeSpan.FromMinutes(5)
+    });
+
+*/
 builder.Services.AddControllers();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IStudentService, StudentService>();

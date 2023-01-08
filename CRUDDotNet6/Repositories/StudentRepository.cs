@@ -64,7 +64,7 @@ namespace CRUDDotNet6.Repositories
             try
             {
                 this._logger.LogInformation($"Enter: Repositories.StudentRepository.GetStudent, Id: {id}");
-                var student = await this._context.Students.FirstOrDefaultAsync(student => student.Id == id);
+                var student = (await this._context.Students.FromSqlRaw<Student>($"call {Constants.Procedures.GET_STUDENT_BY_ID}({id})").ToListAsync<Student>()).FirstOrDefault<Student>();
                 if (student == null)
                     throw new BusinessException($"{Constants.Constants.STUDENT_NOT_FOUND} id: {id}");
                 this._logger.LogInformation($"Exit: Repositories.StudentRepository.GetStudent");
@@ -83,7 +83,7 @@ namespace CRUDDotNet6.Repositories
             try
             {
                 this._logger.LogInformation($"Enter: Repositories.StudentRepository.GetStudents.");
-                List<Student> students = await this._context.Students.ToListAsync<Student>();
+                List<Student> students = await this._context.Students.FromSqlRaw<Student>($"call {Constants.Procedures.GET_ALL_STUDENTS}").ToListAsync<Student>();
                 this._logger.LogInformation($"Exit: Repositories.StudentRepository.GetStudents, Students {students}");
                 return students;
             }

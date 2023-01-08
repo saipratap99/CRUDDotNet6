@@ -26,6 +26,8 @@ builder.AddAzureKeyVault((keyVaultEndpoint, defaultCredentials,
 
 */
 builder.Services.AddControllers();
+
+builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IStudentService, StudentService>();
 

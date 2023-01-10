@@ -5,6 +5,8 @@ VisualStudioVersion = 25.0.1704.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDDotNet6", "CRUDDotNet6\CRUDDotNet6.csproj", "{867C2D32-D43C-4C36-A734-DC1D5D3BBDB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorAdditionFunction", "CalculatorAdditionFunction\CalculatorAdditionFunction.csproj", "{4CA5E647-B6E9-4BAF-B532-AD4BC146D715}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{867C2D32-D43C-4C36-A734-DC1D5D3BBDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{867C2D32-D43C-4C36-A734-DC1D5D3BBDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{867C2D32-D43C-4C36-A734-DC1D5D3BBDB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CA5E647-B6E9-4BAF-B532-AD4BC146D715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA5E647-B6E9-4BAF-B532-AD4BC146D715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA5E647-B6E9-4BAF-B532-AD4BC146D715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA5E647-B6E9-4BAF-B532-AD4BC146D715}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

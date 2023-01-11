@@ -5,23 +5,27 @@
 @model List<Student>
 <div>
     <h3> Students</h3>
-    <table>
+    <table id="studentsTable">
         <tr>
             <th> Id</th>
             <th> Name</th>
             <th> Email</th>
             <th> City</th>
         </tr>
+        @*
+            @foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Name</td>
+                    <td>@student.Email</td>
+                    <td>@student.City</td>
+                </tr>
 
-        @foreach (var student in Model)
-        {
-            <tr>
-                <td>@student.Id</td>
-                <td>@student.Name</td>
-                <td>@student.Email</td>
-                <td>@student.City</td>
-            </tr>
-
-        }
+            }
+        *@
     </table>
 </div>
+
+
+

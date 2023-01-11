@@ -12,6 +12,7 @@ using CRUDDotNet6.Utils;
 using Azure.Extensions.AspNetCore.Configuration.Secrets;
 
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 
@@ -63,7 +64,13 @@ builder.Services.AddAuthentication(opt =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins, policy =>
+    {
+        policy.WithOrigins("http://localhost:5194", "https://mvcapp.azurewebsites.net").AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+    });
+});
 builder.Services.AddSwaggerGen(options =>
 {
 
@@ -129,11 +136,12 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 
 // custom jwt auth middleware
 app.UseMiddleware<JwtMiddleware>();
-
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
 

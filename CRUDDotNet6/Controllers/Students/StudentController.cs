@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CRUDDotNet6.Controllers.Students
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     public class StudentController : Controller
     {
@@ -44,6 +44,7 @@ namespace CRUDDotNet6.Controllers.Students
         }
 
         // GET api/values/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<object>> Get(int id)
         {
@@ -63,6 +64,7 @@ namespace CRUDDotNet6.Controllers.Students
         }
 
         // POST api/values
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<object>> Post([FromBody] Student student)
         {
@@ -82,6 +84,7 @@ namespace CRUDDotNet6.Controllers.Students
         }
 
         // PUT api/values/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<object>> Put(int id, [FromBody]Student student)
         {
@@ -101,6 +104,7 @@ namespace CRUDDotNet6.Controllers.Students
         }
 
         // DELETE api/values/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult<object>> Delete(int id)
         {

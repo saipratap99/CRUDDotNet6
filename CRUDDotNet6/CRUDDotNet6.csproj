@@ -27,6 +27,8 @@
     <None Remove="Azure.Identity" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
     <None Remove="Newtonsoft.Json" />
+    <None Remove="Azure.Storage.Blobs" />
+    <None Remove="Controllers\Blob\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
@@ -43,6 +45,7 @@
     <PackageReference Include="Azure.Identity" Version="1.8.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.14.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
@@ -52,5 +55,6 @@
     <Folder Include="Constants\" />
     <Folder Include="Utils\" />
     <Folder Include="Controllers\Users\" />
+    <Folder Include="Controllers\Blob\" />
   </ItemGroup>
 </Project>

@@ -30,6 +30,7 @@ builder.Configuration.AddAzureKeyVault(new Uri(keyVaultEndpoint), defaultCredent
 builder.Services.AddControllers();
 /// configure strongly typed settings object
 builder.Services.Configure<JWT>(builder.Configuration.GetSection("JWT"));
+builder.Services.AddScoped<IBlobStorage, BlobStorage>();
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IStudentService, StudentService>();
